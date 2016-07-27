@@ -1,0 +1,28 @@
+# this is wer w er building the form using form tag
+
+<h1> New Products</h1>
+<%= form_tag "/products", method: :post %>
+<div>
+  <%= label_tag :name%>
+  <%= text_field_tag :name%>
+</div>
+
+<div>
+  <%= label_tag :price%>
+  <%= text_field_tag :price%>
+</div>
+ 
+<div>
+  <%= label_tag :breed%> 
+  <%=text_field_tag :breed%>
+</div>
+
+<div>
+  <%= label_tag :color%> 
+  <%=text_field_tag :color%>
+</div>
+  
+<div> 
+<%= submit_tag "Create product" %> 
+</div>
+  

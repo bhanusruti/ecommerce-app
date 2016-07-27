@@ -1,1 +1,35 @@
-<%= @products %>
+<h1>Welcome to my pet store!!</h1>
+
+<table class="table">
+  <tr>
+    <th>Name</th>
+    <th>Breed</th>
+    <th>Color</th>
+    <th>Price</th>
+  </tr>
+
+  <div class="row">
+
+<% @products.each do |product| %>
+   
+    
+    
+    
+<tr>
+
+       <td><%= link_to product.name, "/products/#{product.id}" %></td>
+     
+      <td><%= product.breed %></td>
+      <td><%= product.color %></td>
+      <td><%= product.price %></td>
+      
+    <td><%= link_to "Edit", "/products/#{product.id}/edit" %></td>
+    <td><%= link_to "Delete", "/products/#{product.id}", method: :delete %></td>
+
+</tr>
+
+  <% end %>
+
+
+</table>
+</div>

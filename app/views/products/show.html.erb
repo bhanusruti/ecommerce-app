@@ -1,0 +1,12 @@
+  <h3>Show Page!!!</h3>
+  <div class = "bhanu col-md-3" >
+    <ul>
+      <li>Name:<%= @product.name %> </li>
+      <li>Price:<%= @product.price %></li>
+      <li>Breed:<%= @products.breed%></li>
+      <li>Color:<%= @product.color %></li>
+    </ul>
+  </div>
+    
+ <%= link_to "Edit", "/products/#{@product.id}/edit" %>
+ <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
