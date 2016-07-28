@@ -6,6 +6,9 @@
     <th>Breed</th>
     <th>Color</th>
     <th>Price</th>
+    <th>Status</th>
+    <th>Tax</th>
+    <th>Total</th>
   </tr>
 
   <div class="row">
@@ -22,7 +25,12 @@
       <td><%= product.breed %></td>
       <td><%= product.color %></td>
       <td><%= product.price %></td>
-      
+       <td><%= product.sale_message%></td>
+      <td><%= product.tax %></td>
+
+      <td><%= product.total %></td>
+
+
     <td><%= link_to "Edit", "/products/#{product.id}/edit" %></td>
     <td><%= link_to "Delete", "/products/#{product.id}", method: :delete %></td>
 

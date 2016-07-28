@@ -4,6 +4,10 @@
   padding: 20px;
 }
 
+.total{
+  color: red;
+}
+
 nav.navbar-default.navbar{
   font-family: 'Lobster', cursive;
 }
