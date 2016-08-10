@@ -1,43 +1,17 @@
-<h1>Welcome to my pet store!!</h1>
+<h1>Welcome to pet store!!!!</h1>
 
-<table class="table">
-  <tr>
-    <th>Name</th>
-    <th>Breed</th>
-    <th>Color</th>
-    <th>Price</th>
-    <th>Status</th>
-    <th>Tax</th>
-    <th>Total</th>
-  </tr>
-
-  <div class="row">
-
-<% @products.each do |product| %>
-   
-    
-    
-    
-<tr>
-
-       <td><%= link_to product.name, "/products/#{product.id}" %></td>
-     
-      <td><%= product.breed %></td>
-      <td><%= product.color %></td>
-      <td><%= product.price %></td>
-       <td><%= product.sale_message%></td>
-      <td><%= product.tax %></td>
-
-      <td><%= product.total %></td>
-
-
-    <td><%= link_to "Edit", "/products/#{product.id}/edit" %></td>
-    <td><%= link_to "Delete", "/products/#{product.id}", method: :delete %></td>
-
-</tr>
-
+<div class="row">
+  <% @products.each do |product| %>
+    <div class="col-md-4">
+      <a href="/products/<%= product.id %>">
+        <div class="img-wrapper">
+          <img class="img-responsive" src="<%= product.images.first.url if product.images.any? %>">
+        </div>
+      <div class="info-background">
+        <p><%= product.name %></p>
+        <p><%= number_to_currency(product.price) %></p>
+      </div>
+      </a>
+    </div>
   <% end %>
-
-
-</table>
 </div>

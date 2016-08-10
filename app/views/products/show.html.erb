@@ -1,15 +1,45 @@
   <h3>Show Page!!!</h3>
-  <div class = "bhanu col-md-3" >
-    <ul>
-      <li>Name:<%= @product.name %> </li>
-      <li class= "total">Price:<%= @product.price %></li>
-      <li>Breed:<%= @product.breed%></li>
-      <li>Color:<%= @product.color %></li>
-       <li>Tax:<%= @product.tax %></li>
-        <li >Total:<%= @product.total %></li>
-         
-    </ul>
+ <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-4">
+      <ul class="info-background">
+        <li><%= @product.sale_message.humanize %></li>
+        <li>Name: <%= @product.name %></li>
+        <li>Description: <%= @product.description %></li>
+        <li>Supplier: <%= @product.supplier.name %></li>
+        <li class="<%= @product.sale_message %>">Price: <%= number_to_currency(@product.price) %></li>
+        <li>Categories:
+          <ul>
+            <% @product.categories.each do |category| %>
+              <li><%= category.name %></li>
+            <% end %>
+          </ul>
+        </li>
+        <li>Tax: <%= number_to_currency(@product.tax) %></li>
+        <li>Total: <%= number_to_currency(@product.total) %></li>
+
+        <% if current_user && current_user.admin %>
+          <li><%= link_to "Edit", "/products/#{@product.id}/edit" %></li> 
+          <li><%= link_to "Delete", "/products/#{@product.id}", method: :delete %></li>
+          <li><%= link_to "Add Image", "/images/new" %></li>
+        <%end%> 
+      </ul>
+
+      <% if current_user %>
+       <%= form_tag "/carted_products", method: :post do %>
+        <div>
+          <%= label_tag :quantity %>
+          <%= text_field_tag :quantity %>
+        </div>
+        <%= hidden_field_tag :product_id, @product.id %>          
+        <%= submit_tag "Add to Cart" %>  
+      <% end %>
+      <%else%>
+
+    </div>
+    <div class="col-md-4">
+      <% @product.images.each do |image| %>
+        <img class="image-show img-responsive" src="<%= image.url %>">
+      <% end %>
+    </div>
   </div>
-    
- <%= link_to "Edit", "/products/#{@product.id}/edit" %>
- <%= link_to "Delete", "/products/#{@product.id}", method: :delete %>
